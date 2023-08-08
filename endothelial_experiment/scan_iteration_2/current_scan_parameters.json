@@ -1,0 +1,8 @@
+{
+    "current_iteration": 2,
+    "parameters": {
+        "setLambda": "2000",
+        "endocount": "500",
+        "setSaturationCoef": "10**-8"
+    }
+}
