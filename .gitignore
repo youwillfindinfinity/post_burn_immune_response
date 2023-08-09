@@ -24,6 +24,15 @@ m2death_experiment1/scan_iteration_2/combi_code/LatticeData/
 m2death_experiment1/scan_iteration_3/combi_code/LatticeData/
 
 
+m2death_experiment2/scan_iteration_0/combi_code/LatticeData/
+m2death_experiment2/scan_iteration_1/combi_code/LatticeData/
+m2death_experiment2/scan_iteration_2/combi_code/LatticeData/
+m2death_experiment2/scan_iteration_3/combi_code/LatticeData/
+m2death_experiment2/scan_iteration_4/combi_code/LatticeData/
+m2death_experiment2/scan_iteration_5/combi_code/LatticeData/
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
