@@ -440,6 +440,8 @@ def stream_plot_cytokines(file, n_exp, exp, show, outputdir):
 
 
 def cell_count_boxplot(file, n_exp, exp, show, outputdir):
+
+    
     names = ['E{}'.format(i) for i in range(1, n_exp + 1)]
     colors = ["brown", "cyan", "violet", "red", "pink", "yellow", "orange", "darkblue", "green"]
     cell_count_labels = ["Resting Neutrophils", "Monocytes", "Fibroblasts",
@@ -450,7 +452,7 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
     num_intervals = len(time_intervals)
 
     # Create a figure with subplots, adjusting size to fit four plots in one row
-    fig, axs = plt.subplots(n_exp, num_intervals, figsize=(16, 4 * n_exp), sharey='row', sharex='col')
+    fig, axs = plt.subplots(n_exp, num_intervals, figsize=(16, 4 * n_exp), sharex='col')
 
     for exp_idx in range(n_exp):
         all_data = pd.DataFrame()  # Store the combined data for each experiment
@@ -480,8 +482,11 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
             axs[exp_idx, interval_idx].set_xlabel('')
             axs[exp_idx, interval_idx].set_ylabel('Cell Count')
 
-            # Set y-axis locator to intervals of 400
-            axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(400))
+            # Set y-axis locator and formatter
+            if interval_idx == 0:
+                axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(200))
+            else:
+                axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(50))
 
         # Set y-label only for the first subplot in each row
         axs[exp_idx, 0].set_ylabel(f"{names[exp_idx]} - Cell Count")
@@ -509,6 +514,7 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
 
 
 # cell_count_boxplot('combi_code/datafiles/', n_exp = 4)
+
 
 
 
@@ -660,10 +666,10 @@ def run_experiments(file, experiment, show, n_exp, calc=None):
     elif experiment is None:
         show = "Off"
         for i in range(n_exp):
-            # cell_count("scan_iteration_{}/{}cellcount.txt".format(i, file), "E{}".format(i + 1), show, output_folder)
-            # cyt_concentrations("scan_iteration_{}/{}mean_concentration.txt".format(i, file), "E{}".format(i + 1), show,
-            #                    output_folder)
-            # print("Experiment {} rendered!".format(i + 1))
+            cell_count("scan_iteration_{}/{}cellcount.txt".format(i, file), "E{}".format(i + 1), show, output_folder)
+            cyt_concentrations("scan_iteration_{}/{}mean_concentration.txt".format(i, file), "E{}".format(i + 1), show,
+                               output_folder)
+            print("Experiment {} rendered!".format(i + 1))
 
             # Data
             data = pd.read_csv("scan_iteration_{}/{}cellcount.txt".format(i, file),
@@ -706,13 +712,18 @@ def run_experiments(file, experiment, show, n_exp, calc=None):
 
         df = pd.DataFrame(raw_data)
 
-        # percent_stacked(df, n_exp, calc, show, outputdir=output_folder)
+        percent_stacked(df, n_exp, calc, show, outputdir=output_folder)
+        experiment = "cytokine bar plot"
         cytokine_barplot(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
+        experiment = "cell count bar plot"
         cell_count_barplot(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
+        experiment = "stream plot cytokine"
         stream_plot_cytokines(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
+        experiment = "cell count boxplot"
         cell_count_boxplot(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
         print("All Experiments rendered!")
-
+       
+    
     return
 
 run_experiments(file = 'combi_code/datafiles/', experiment= None, show = "off", n_exp = 4, calc ="mean")

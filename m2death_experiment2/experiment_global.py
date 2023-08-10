@@ -440,6 +440,8 @@ def stream_plot_cytokines(file, n_exp, exp, show, outputdir):
 
 
 def cell_count_boxplot(file, n_exp, exp, show, outputdir):
+
+    
     names = ['E{}'.format(i) for i in range(1, n_exp + 1)]
     colors = ["brown", "cyan", "violet", "red", "pink", "yellow", "orange", "darkblue", "green"]
     cell_count_labels = ["Resting Neutrophils", "Monocytes", "Fibroblasts",
@@ -450,7 +452,7 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
     num_intervals = len(time_intervals)
 
     # Create a figure with subplots, adjusting size to fit four plots in one row
-    fig, axs = plt.subplots(n_exp, num_intervals, figsize=(16, 4 * n_exp), sharey='row', sharex='col')
+    fig, axs = plt.subplots(n_exp, num_intervals, figsize=(16, 4 * n_exp), sharex='col')
 
     for exp_idx in range(n_exp):
         all_data = pd.DataFrame()  # Store the combined data for each experiment
@@ -480,8 +482,11 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
             axs[exp_idx, interval_idx].set_xlabel('')
             axs[exp_idx, interval_idx].set_ylabel('Cell Count')
 
-            # Set y-axis locator to intervals of 400
-            axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(400))
+            # Set y-axis locator and formatter
+            if interval_idx == 0:
+                axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(200))
+            else:
+                axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(50))
 
         # Set y-label only for the first subplot in each row
         axs[exp_idx, 0].set_ylabel(f"{names[exp_idx]} - Cell Count")
@@ -509,6 +514,7 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
 
 
 # cell_count_boxplot('combi_code/datafiles/', n_exp = 4)
+
 
 
 
