@@ -1,0 +1,10 @@
+{
+    "current_iteration": 6,
+    "parameters": {
+        "setLambda": "2000",
+        "endocount": "1000",
+        "setSaturationCoef": "10**-11",
+        "vmax": "-17.79826",
+        "km": "-963211.7"
+    }
+}
