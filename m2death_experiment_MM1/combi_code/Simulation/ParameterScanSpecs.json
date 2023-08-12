@@ -1,0 +1,20 @@
+{
+    "version":"4.0.0",
+    "parameter_list":{
+        "setLambda":{            
+            "values":["2000"]
+        },
+        "endocount":{            
+            "values":["1000"]
+        },
+        "setSaturationCoef":{            
+            "values":["10**-11"]
+        },
+        "vmax":{            
+            "values":["-5.263158", "19.60748"]
+        },
+        "km":{            
+            "values":["-985263.2", "-638890.9"]
+        }
+    }
+}
