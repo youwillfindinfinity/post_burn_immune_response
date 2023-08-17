@@ -47,16 +47,16 @@ def cell_count(file, exp, show, outputdir=None):
     axs[0].xaxis.set_major_locator(mticker.FixedLocator(ticks_loc))  # Ensure right tick locations
     axs[1].xaxis.set_major_locator(mticker.FixedLocator(ticks_loc))  # Ensure right tick locations
     # set the labels on the ticks
-    axs[0].set_xticklabels(xlabels)
-    axs[1].set_xticklabels(xlabels)
+    axs[0].set_xticklabels(xlabels, fontsize='medium')
+    axs[1].set_xticklabels(xlabels, fontsize='medium')
     # Set y-axis limit for the second plot
     axs[1].set_ylim([0, max(data[cols[-2]]) / 2])
 
     # Set axis labels and legends
-    axs[0].set_ylabel("Cell count")
-    axs[1].set_ylabel("Cell count")
-    axs[0].set_xlabel("Hours of simulation")
-    axs[1].set_xlabel("Hours of simulation")
+    axs[0].set_ylabel("Cell count", fontsize='medium')
+    axs[1].set_ylabel("Cell count", fontsize='medium')
+    axs[0].set_xlabel("Hours of simulation", fontsize='medium')
+    axs[1].set_xlabel("Hours of simulation", fontsize='medium')
     axs[0].legend(loc='center left', bbox_to_anchor=(1, 0.5))
     axs[1].legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
@@ -81,7 +81,7 @@ def cyt_concentrations(file, exp, show, outputdir=None):
                                                "il10std","tnfstd","tgfstd"])
 
     # Cytokine labels and colors for the first plot
-    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", "TGF"]
+    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", r"TGF-$\beta$"]
     cols = ["il8mean","il1mean", "il6mean","il10mean","tnfmean", "tgfmean"]
     colors = ["blue", "brown", "violet", "red", "yellow", "orange"]
 
@@ -120,10 +120,10 @@ def cyt_concentrations(file, exp, show, outputdir=None):
     axs[1].set_yscale('log')
 
     # Set axis labels and legends
-    axs[0].set_ylabel("Concentration")
-    axs[1].set_ylabel("Concentration")
-    axs[0].set_xlabel("Hours of simulation")
-    axs[1].set_xlabel("Hours of simulation")
+    axs[0].set_ylabel("Concentration", fontsize='medium')
+    axs[1].set_ylabel("Concentration", fontsize='medium')
+    axs[0].set_xlabel("Hours of simulation", fontsize='medium')
+    axs[1].set_xlabel("Hours of simulation", fontsize='medium')
     axs[0].legend(loc='center left', bbox_to_anchor=(1, 0.5))
     axs[1].legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
@@ -174,12 +174,14 @@ def percent_stacked(df, n_exp, calc, show, outputdir=None):
     # Customize x-axis and labels
     ax.set_xticks(d)
     ax.set_xticklabels(names)
-    ax.set_xlabel("Experiment")
-    ax.set_ylabel(r"% of cells in total")
+    ax.set_xlabel("Experiment", fontsize='medium')
+    ax.set_ylabel(r"% of cells in total", fontsize='medium')
 
     # Add a legend
-    ax.legend(title="Types of cells", fontsize='small', fancybox=True, loc='upper left', bbox_to_anchor=(1, 1), ncol=1)
-
+    ax.legend(title="Types of cells", fontsize='small', fancybox=True, loc='lower left', 
+        bbox_to_anchor=(0., 1.02, 1., .102), ncol=4, mode="expand", borderaxespad=0.)
+    # .legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left',
+    #                   ncols=2, mode="expand", borderaxespad=0.)
     # Save or show the plot based on the 'show' parameter
     plt.savefig(outputdir + calc + "_" + "cell_n_comparison.png", dpi=300)
     if show == "on":
@@ -188,63 +190,6 @@ def percent_stacked(df, n_exp, calc, show, outputdir=None):
         plt.close()
 
     return
-
-
-
-
-
-# def day_barplot(file, n_exp):
-#     all_bars = []
-#     all_stds = []
-#     names = ['E{}'.format(i) for i in range(1, n_exp + 1)]
-#     colors = ["blue", "brown", "violet", "red", "yellow", "orange"]
-
-#     # Calculate the width of the bars and the number of bar groups
-#     barWidth = 0.8 / (len(colors))
-#     num_bars = len(colors)
-
-#     for i in range(n_exp):
-#         path = "scan_iteration_{}/{}mean_concentration.txt".format(i, file)
-#         data = pd.read_csv(path, sep=",", usecols=["meanconcen", "il8mean", "il1mean",
-#                                                    "il6mean", "il10mean", "tnfmean", "tgfmean",
-#                                                    "il8std", "il1std", "il6std", "il10std", "tnfstd", "tgfstd"])
-#         IL8m = np.mean(data['il8mean'])
-#         IL1m = np.mean(data['il1mean'])
-#         IL6m = np.mean(data['il6mean'])
-#         IL10m = np.mean(data['il10mean'])
-#         tnfm = np.mean(data['tnfmean'])
-#         tgfm = np.mean(data['tgfmean'])
-
-#         IL8std = np.mean(data['il8std'])
-#         IL1std = np.mean(data['il1std'])
-#         IL6std = np.mean(data['il6std'])
-#         IL10std = np.mean(data['il10std'])
-#         tnfstd = np.mean(data['tnfstd'])
-#         tgfstd = np.mean(data['tgfstd'])
-
-#         bars = [IL8m, IL1m, IL6m, IL10m, tnfm, tgfm]
-#         all_bars.append(bars)
-#         stds = [IL8std, IL1std, IL6std, IL10std, tnfstd, tgfstd]
-#         all_stds.append(stds)
-
-#     # Create positions for each bar group
-#     bar_pos = [np.arange(len(names)) + (i * barWidth) for i in range(num_bars)]
-
-#     labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", "TGF"]
-
-#     for j in range(num_bars):
-#         plt.bar(bar_pos[j], [all_bars[i][j] for i in range(n_exp)],
-#                 width=barWidth, color=colors[j], edgecolor='black', yerr=[all_stds[i][j] for i in range(n_exp)],
-#                 capsize=7, label=labels[j])
-
-#     plt.xticks([r + (barWidth * (num_bars - 1) / 2) for r in range(len(names))], names)
-#     plt.ylabel('Mean Concentration')
-#     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-#     plt.yscale("log")
-#     plt.show()
-#     return
-
-
 
 
 
@@ -286,13 +231,13 @@ def cytokine_barplot(file, n_exp, exp, show, outputdir):
         # Create positions for each bar group
         bar_pos = np.arange(len(bars)) + (i * barWidth)
 
-        labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", "TGF"]
+        labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", r"TGF-$\beta$"]
 
         plt.bar(bar_pos, bars, width=barWidth, color=colors[i], edgecolor='black', label=names[i])
         plt.errorbar(bar_pos, bars, yerr=stds, fmt='None', elinewidth=1, capsize=error_bar_width, ecolor='black')
 
     plt.xticks([r + (barWidth * (num_bars - 1) / 2) for r in range(len(bars))], labels)
-    plt.ylabel('Mean Concentration')
+    plt.ylabel('Mean Concentration', fontsize='medium')
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.yscale("log")
     # Save the figure
@@ -340,8 +285,8 @@ def cell_count_barplot(file, n_exp, exp, show, outputdir):
         bar_pos_exp = np.arange(len(stds_exp)) + (i * barWidth)
         plt.errorbar(bar_pos_exp, all_bars[i], yerr=stds_exp, fmt='None', elinewidth=1, capsize=error_bar_width, ecolor='black')
 
-    plt.xticks([r + (barWidth * (num_bars - 1) / 2) for r in range(len(bars))], cell_count_labels, rotation=60)
-    plt.ylabel('Cell Count')
+    plt.xticks([r + (barWidth * (num_bars - 1) / 2) for r in range(len(bars))], cell_count_labels, rotation=30)
+    plt.ylabel('Cell Count', fontsize='large')
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.yscale('log')
     # Save the figure
@@ -377,13 +322,13 @@ def stream_plot_cytokines(file, n_exp, exp, show, outputdir):
 
     colors = cm.rainbow(np.linspace(0, 1, n_exp))  # Adjust the color map based on the number of experiments
 
-    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", "TGF"]
+    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", r"TGF-$\beta$"]
 
     for i in range(6):  # Loop through cytokines
         axs.flat[i].set_yscale('log')
         # min_ylim = max(initial_conc[i]/100 , 1e-15)
         axs.flat[i].set_ylim([10**(-13), 10**(-7)])
-        axs.flat[i].tick_params(axis='x', labelrotation=60)
+        axs.flat[i].tick_params(axis='x')
         for j in range(n_exp):  # Loop through experiments
             x = full_data[0]['meanconcen']
             y = full_data[j].iloc[:, i + 1]  # Select cytokine data
@@ -419,8 +364,8 @@ def stream_plot_cytokines(file, n_exp, exp, show, outputdir):
             
 
     # Set common x and y labels
-    fig.text(0.5, 0.04, 'Time', ha='center')
-    fig.text(0.04, 0.5, 'Concentration', va='center', rotation='vertical')
+    fig.text(0.5, 0.04, 'Time(h)', ha='center', fontsize='large')
+    fig.text(0.04, 0.5, 'Concentration', va='center', rotation='vertical', fontsize='large')
 
     plt.legend(loc='center left', bbox_to_anchor=(1, 1.2))
     # Save the figure
@@ -478,15 +423,15 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
 
             # Plot the boxplot and store handles and labels
             boxplot = sns.boxplot(x='Cell Type', y='Cell Count', data=interval_data, ax=axs[exp_idx, interval_idx], palette=colors)
-            axs[exp_idx, interval_idx].set_title(f"{names[exp_idx]} - {start_time}-{end_time} hours")
-            axs[exp_idx, interval_idx].set_xlabel('')
-            axs[exp_idx, interval_idx].set_ylabel('Cell Count')
+            axs[exp_idx, interval_idx].set_title(f"{names[exp_idx]} - {start_time}-{end_time} hours", fontsize='large')
+            axs[exp_idx, interval_idx].set_xlabel('Cell Type', fontsize='large')
+            axs[exp_idx, interval_idx].set_ylabel('Cell Count', fontsize='large')
 
             # Set y-axis locator and formatter
             if interval_idx == 0:
-                axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(400))
-            else:
                 axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(200))
+            else:
+                axs[exp_idx, interval_idx].yaxis.set_major_locator(MultipleLocator(50))
 
         # Set y-label only for the first subplot in each row
         axs[exp_idx, 0].set_ylabel(f"{names[exp_idx]} - Cell Count")
@@ -497,7 +442,8 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
         axs[n_exp - 1, interval_idx].set_xticklabels(cell_count_labels, rotation=45, ha='right')
 
     # Create a common legend for all the subplots
-    fig.legend(names, loc='center left', bbox_to_anchor=(1, 0.5))
+    fig.legend(names, title="Types of cells", fontsize='small', fancybox=True, loc='lower left', 
+        bbox_to_anchor=(0., 1.02, 1., .102), ncol=4, mode="expand", borderaxespad=0.)
 
     # Adjust spacing between subplots
     plt.tight_layout()
@@ -520,7 +466,7 @@ def cell_count_boxplot(file, n_exp, exp, show, outputdir):
 
 def cytokine_boxplot(file, n_exp, exp):
     names = ['E{}'.format(i) for i in range(1, n_exp + 1)]
-    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", "TGF"]
+    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", r"TGF-$\beta$"]
     cols = ["il8mean", "il1mean", "il6mean", "il10mean", "tnfmean", "tgfmean"]
     colors = ["blue", "brown", "violet", "red", "yellow", "orange"]
     time_intervals = [(0, 24), (24, 48), (48, 72), (72, 96)]
@@ -542,23 +488,23 @@ def cytokine_boxplot(file, n_exp, exp):
         time = data['meanconcen']
         for interval_idx, (start_time, end_time) in enumerate(time_intervals):
             # Convert time intervals from hours to corresponding indices in the DataFrame
-            start_idx = int(start_time * 10000 / 24)
-            end_idx = int(end_time * 10000 / 24)
+            start_idx = int(start_time * 10000)
+            end_idx = int(end_time * 10000)
 
             # Filter data based on time intervals
             interval_data = data.iloc[start_idx:end_idx]
 
             # Plot the boxplot and store handles and labels
             boxplot = sns.boxplot(data=interval_data[cols], ax=axs[exp_idx, interval_idx], palette=colors)
-            axs[exp_idx, interval_idx].set_title(f"{names[exp_idx]} - {start_time}-{end_time} hours")
+            axs[exp_idx, interval_idx].set_title(f"{names[exp_idx]} - {start_time}-{end_time} hours",fontsize='large')
             axs[exp_idx, interval_idx].set_xlabel('')
-            axs[exp_idx, interval_idx].set_ylabel('Concentration')
+            axs[exp_idx, interval_idx].set_ylabel('Concentration', fontsize='large')
 
             # Set y-axis to be logarithmic
             axs[exp_idx, interval_idx].set_yscale('log')
 
         # Set y-label only for the first subplot in each row
-        axs[exp_idx, 0].set_ylabel(f"{names[exp_idx]} - Concentration")
+        axs[exp_idx, 0].set_ylabel(f"{names[exp_idx]} - Concentration", fontsize='large')
 
     # Adjust x-axis ticks and labels for all subplots
     for interval_idx in range(num_intervals):
@@ -579,7 +525,199 @@ def cytokine_boxplot(file, n_exp, exp):
 
 # cytokine_boxplot('combi_code/datafiles/', n_exp = 2)
 
+def cell_count_mean_diff_boxplot(file, n_exp, exp, show, outputdir):
+    cell_count_labels = ["Resting Neutrophils", "Monocytes", "Fibroblasts",
+                         "Activated Neutrophils", "NDN Neutrophils", "Resting Monocytes",
+                         "Macrophages I", "Macrophages II", "Myofibroblasts"]
+    cols = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    colors = ["brown", "cyan", "violet", "red", "pink", "yellow", "orange", "darkblue", "green"]
+    time_intervals = [(0, 24), (24, 48), (48, 72), (72, 96)]
+    num_intervals = len(time_intervals)
 
+    # Create a figure with subplots, 2 rows and 2 columns
+    fig, axs = plt.subplots(2, 2, figsize=(12, 12))
+
+    for interval_idx, (start_time, end_time) in enumerate(time_intervals):
+        mean_diff_data = []  # Initialize a list to hold the mean difference data for box plots
+        std_diff_data = []   # Initialize a list to hold the standard deviation data for error bars
+
+        for cell_idx, cell_type in enumerate(cell_count_labels):
+            data_for_cell_type_first = np.array([])  # Data for the first experiment
+            data_for_cell_type_last = np.array([])   # Data for the last experiment
+
+            for exp_idx in range(n_exp):
+                path = "scan_iteration_{}/{}cellcount.txt".format(exp_idx, file)
+                data = pd.read_csv(path, sep=",")  # Load the data
+
+                # Convert time intervals from hours to steps
+                start_steps = start_time * 10000
+                end_steps = end_time * 10000
+
+                # Filter data based on time intervals and cell type
+                interval_data = data.query('mcsteps >= @start_steps and mcsteps <= @end_steps')
+
+                if interval_data.empty:
+                    # Skip empty data
+                    continue
+
+                # Get the cell count data for the current time interval, experiment, and cell type
+                cell_count_data = interval_data[cols[cell_idx]]  # Access the correct column
+
+                if exp_idx == 3: # experiment 4 is control
+                    data_for_cell_type_first = np.concatenate((data_for_cell_type_first, cell_count_data))
+                elif exp_idx == n_exp - 1:
+                    data_for_cell_type_last = np.concatenate((data_for_cell_type_last, cell_count_data))
+
+            # Calculate the mean difference between the first and last experiments
+            mean_diff = np.mean(data_for_cell_type_last) - np.mean(data_for_cell_type_first)
+            mean_diff_data.append(mean_diff)
+
+            # Calculate the standard deviation for the error bars
+            std_diff = np.std(data_for_cell_type_last - data_for_cell_type_first)
+            std_diff_data.append(std_diff)
+
+        # Calculate subplot position
+        row = interval_idx // 2
+        col = interval_idx % 2
+
+        # Create the box plot with error bars for the mean difference data
+        box = axs[row, col].bar(cell_count_labels, mean_diff_data, color=colors, yerr=std_diff_data, capsize=5) 
+        axs[row, col].set_title(f"{start_time}-{end_time} hours", fontsize='large')
+        axs[row, col].set_xticks(range(len(cell_count_labels)))  # Set tick positions
+        axs[row, col].set_xticklabels(cell_count_labels, rotation=45, ha='right')
+
+        if row == 0:
+            axs[row, col].set_xticklabels([])
+            axs[row, col].set_xlabel('')
+
+        if row == 1:
+            axs[row, col].set_xlabel('Cell Type', fontsize='large')
+            axs[row, col].tick_params(axis='x', rotation=45)
+
+        if col == 0:
+            axs[row, col].set_ylabel('Mean Difference in Cell Count', fontsize='large')
+
+        if interval_idx == len(time_intervals) - 1:
+            axs[row, col].set_xlabel('Cell Type', fontsize='large')
+        # else:
+        #     axs[row, col].set_xlabel('Cell Type')
+
+    # Adjust spacing between subplots
+    plt.tight_layout()
+
+    # Save the figure
+    fig.savefig("{}cell_count_mean_difference.png".format(outputdir), dpi=300)
+
+    if show == "on":
+        plt.show()
+    else:
+        plt.close()
+
+
+
+
+# cell_count_mean_diff_boxplot('combi_code/datafiles/', 6, exp = "diff_boxplot", show="on", outputdir = "Output/")
+
+
+def cytokine_mean_diff_boxplot(file, n_exp, exp, outputdir, show):
+    cytokine_labels = ["IL-8", "IL-1", "IL-6", "IL-10", "TNF", r"TGF-$\beta$"]
+    cols = ["il8mean", "il1mean", "il6mean", "il10mean", "tnfmean", "tgfmean"]
+    colors = ["blue", "brown", "violet", "red", "yellow", "orange"]
+    time_intervals = [(0, 24), (24, 48), (48, 72), (72, 96)]
+    num_intervals = len(time_intervals)
+
+    # Initialize variables to store overall min and max values
+    overall_min = float('inf')
+    overall_max = float('-inf')
+
+    # Create a figure with subplots, 2 rows and 2 columns
+    fig, axs = plt.subplots(2, 2, figsize=(12, 12))
+
+    for interval_idx, (start_time, end_time) in enumerate(time_intervals):
+        mean_diff_data = []  # Initialize a list to hold the mean difference data for box plots
+        std_diff_data = []   # Initialize a list to hold the standard deviation data for error bars
+
+        for cytokine_idx, cytokine_type in enumerate(cytokine_labels):
+            data_for_cytokine_first = np.array([])  # Data for the first experiment
+            data_for_cytokine_last = np.array([])   # Data for the last experiment
+
+            for exp_idx in range(n_exp):
+                path = "scan_iteration_{}/{}mean_concentration.txt".format(exp_idx, file)
+                data = pd.read_csv(path, sep=",", usecols=["meanconcen"] + cols)  # Load the data
+
+                # Convert time intervals from hours to steps
+                start_steps = start_time * 10000 
+                end_steps = end_time * 10000 
+
+                # Filter data based on time intervals and cytokine type
+                interval_data = data.query('meanconcen >= @start_steps and meanconcen <= @end_steps')
+
+                if interval_data.empty:
+                    # Skip empty data
+                    continue
+
+                # Get the cytokine concentration data for the current time interval, experiment, and cytokine type
+                cytokine_concentration_data = interval_data[cols[cytokine_idx]]  # Access the correct column
+
+                if exp_idx == 3: # experiment 4 is control
+                    data_for_cytokine_first = np.concatenate((data_for_cytokine_first, cytokine_concentration_data))
+                elif exp_idx == n_exp - 1:
+                    data_for_cytokine_last = np.concatenate((data_for_cytokine_last, cytokine_concentration_data))
+
+            # Calculate the mean difference between the first and last experiments
+            mean_diff = np.mean(data_for_cytokine_last) - np.mean(data_for_cytokine_first)
+            mean_diff_data.append(mean_diff)
+
+            # Calculate the standard deviation for the error bars
+            std_diff = np.std(data_for_cytokine_last - data_for_cytokine_first)
+            std_diff_data.append(std_diff)
+
+
+        # Calculate subplot position
+        row = interval_idx // 2
+        col = interval_idx % 2
+
+        # Create the box plot with error bars for the mean difference data
+        box = axs[row, col].bar(cytokine_labels, mean_diff_data, color=colors, yerr=std_diff_data, capsize=5)
+        axs[row, col].set_title(f"{start_time}-{end_time} hours", fontsize='large')
+        axs[row, col].set_xticks(range(len(cytokine_labels)))  # Set tick positions
+        axs[row, col].set_xticklabels(cytokine_labels, rotation=45, ha='right')
+
+        if row == 0:
+            axs[row, col].set_xticklabels([])
+            axs[row, col].set_xlabel('')
+
+        if row == 1:
+            axs[row, col].set_xlabel('Cytokine Type', fontsize='large')
+            axs[row, col].tick_params(axis='x', rotation=45)
+
+        if col == 0:
+            axs[row, col].set_ylabel('Mean Difference in Concentration', fontsize='large')
+
+        if interval_idx == len(time_intervals) - 1:
+            axs[row, col].set_ylabel('')
+        # else:
+            # axs[row, col].set_xlabel('Cytokine Type')
+
+        # Set y-axis to logarithmic scale
+        # axs[row, col].set_yscale('log')
+
+        # Set y-axis limits to be the same for all subplots
+        axs[row, col].set_ylim(-2*10**-9, 8.0*10**-9)
+
+    # Adjust spacing between subplots
+    plt.tight_layout()
+
+    # Save the figure
+    fig.savefig("{}cytokine_mean_difference.png".format(outputdir), dpi=300)
+
+    if show == "on":
+        plt.show()
+    else:
+        plt.close()
+
+
+# cytokine_mean_diff_boxplot('combi_code/datafiles/', 6, exp = "diff_boxplot", show="on", outputdir = "Output/")
 def run_experiments(file, experiment, show, n_exp, calc=None):
     """
     experiment types:
@@ -721,11 +859,14 @@ def run_experiments(file, experiment, show, n_exp, calc=None):
         stream_plot_cytokines(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
         experiment = "cell count boxplot"
         cell_count_boxplot(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
+        experiment = "cell count mean diff boxplot"
+        cell_count_mean_diff_boxplot(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
+        experiment = "cytokine mean diff boxplot"
+        cytokine_mean_diff_boxplot(file=file, n_exp=n_exp, exp=experiment, show= show, outputdir=output_folder)
         print("All Experiments rendered!")
        
     
     return
 
 run_experiments(file = 'combi_code/datafiles/', experiment= None, show = "off", n_exp = 8, calc ="mean")
-
 
