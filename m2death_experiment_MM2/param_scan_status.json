@@ -1,0 +1,40 @@
+{
+    "version": "4.0.0",
+    "parameter_list": {
+        "setLambda": {
+            "values": [
+                "2000"
+            ],
+            "current_idx": 0
+        },
+        "endocount": {
+            "values": [
+                "1000"
+            ],
+            "current_idx": 0
+        },
+        "setSaturationCoef": {
+            "values": [
+                "10**-11"
+            ],
+            "current_idx": 0
+        },
+        "vmax": {
+            "values": [
+                "-17.79826",
+                "-15.0951",
+                "-33.45558"
+            ],
+            "current_idx": 2
+        },
+        "km": {
+            "values": [
+                "-1002721",
+                "-961449.1",
+                "-963211.7"
+            ],
+            "current_idx": 2
+        }
+    },
+    "current_iteration": 8
+}
