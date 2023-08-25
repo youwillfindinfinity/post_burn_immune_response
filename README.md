@@ -46,10 +46,11 @@ Compucell3D 4.4.1 was also used here with the help of numpy and fipy packages.
 ## Getting the figures, raw data files and videos of the simulations
 
 You can download a copy of all the files in this repository by cloning the
-[git](http://youwillfindinfinity/post_burn_immune_response) repository:
+repository 
 
-or [download a zip archive](https://github.com/youwillfindinfinity/post_burn_immune_response.zip).
+  git clone http://youwillfindinfinity/post_burn_immune_response
 
+or Code>Download Zip.
 
 The figures and text are not yet open source. The authors reserve the rights to the
 article content, which is currently being submitted for publication in the
