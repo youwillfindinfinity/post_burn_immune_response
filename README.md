@@ -1,57 +1,54 @@
-# “An in silico modeling approach to understanding the dynamics of the post-burn immune response”
+# An in silico modeling approach to understanding the dynamics of the post-burn immune response
 
-by
-
-H. Ibrahim Korkmaz1,2,3,4*†, Vivek M. Sheraton5,6,7†, Roland V. Bumbuc1,2,5,6,7
+**Authors:**  
+H. Ibrahim Korkmaz<sup>1,2,3,4*</sup>†, Vivek M. Sheraton<sup>5,6,7*</sup>†, Roland V. Bumbuc<sup>1,2,5,6,7</sup>, Meifang Li<sup>5</sup>, Anouk Pijpe<sup>1,3</sup>, Patrick P.G. Mulder<sup>4,8</sup>, Bouke K.H.L. Boekema<sup>1,4</sup>, Evelien de Jong<sup>9</sup>, Stephan G.F. Papendorp<sup>9</sup>, Ruud Brands<sup>10,11</sup>, Esther Middelkoop<sup>1,3,4</sup>, Peter M.A. Sloot<sup>5</sup>, Paul P.M. van Zuijlen<sup>1,3,4,12</sup>
 
 † These authors contributed equally to this work and share first authorship.
 
-Department of Plastic, Reconstructive and Hand Surgery, Amsterdam Movement Sciences (AMS) Institute, Amsterdam UMC, Location VUmc, Amsterdam, The Netherlands.
+**Affiliations:**
+1. Department of Plastic, Reconstructive and Hand Surgery, Amsterdam Movement Sciences (AMS) Institute, Amsterdam UMC, Location VUmc, Amsterdam, The Netherlands.
+2. Department of Molecular Cell Biology and Immunology, Amsterdam Infection and Immunity (AII) Institute, Amsterdam UMC, Location VUmc, Amsterdam, The Netherlands.
+3. Burn Center and Department of Plastic and Reconstructive Surgery, Red Cross Hospital, Beverwijk, The Netherlands.
+4. Preclinical Research, Association of Dutch Burn Centres (ADBC), Beverwijk, The Netherlands.
+5. Computational Science Lab, Informatics Institute, University of Amsterdam, UvA - LAB42, Amsterdam, The Netherlands.
+6. Center for Experimental and Molecular Medicine (CEMM), Amsterdam UMC, Amsterdam, The Netherlands.
+7. Laboratory for Experimental Oncology and Radiobiology, ONCODE, Amsterdam UMC, Location AMC, Amsterdam, The Netherlands.
+8. Laboratory of Medical Immunology, Department of Laboratory Medicine, Radboud University Medical Center, Nijmegen, The Netherlands.
+9. Department of Intensive Care, Red Cross Hospital, Beverwijk, The Netherlands.
+10. Complexity Institute, Nanyang Technological University, Singapore, Singapore.
+11. Alloksys Life Sciences BV, Wageningen, Netherlands.
+12. Paediatric Surgical Centre, Emma Children’s Hospital, Amsterdam UMC, location AMC, Amsterdam, The Netherlands.
 
-Department of Molecular Cell Biology and Immunology, Amsterdam Infection and Immunity (AII) Institute, Amsterdam UMC, Location VUmc, Amsterdam, The Netherlands.
+**Correspondence:**
+H. Ibrahim Korkmaz  
+Email: h.korkmaz@amsterdamumc.nl
 
-Burn Center and Department of Plastic and Reconstructive Surgery, Red Cross Hospital, Beverwijk, The Netherlands.
+**Keywords:**  
+burns, wound healing, inflammation, immune response, computational modeling.
 
-Association of Dutch Burn Centres (ADBC), Beverwijk, The Netherlands.
-
-Computational Science Lab, Informatics Institute, University of Amsterdam, UvA - LAB42, Amsterdam, The Netherlands.
-
-Center for Experimental and Molecular Medicine (CEMM), Amsterdam UMC, Amsterdam, The Netherlands.
-
-Laboratory for Experimental Oncology and Radiobiology, ONCODE, Amsterdam UMC, Location AMC, Amsterdam, The Netherlands.
-
-
+![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/assets/71082489/ca07137f-91fd-4b1b-a107-b61b3f2c108d)
 
 This paper will be submitted for publication in *Frontiers in Immunology: New Approach Methods in Immunology*.
 
-![](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/8f2af0e6082c1acdeabf84115769948ae6816db4/endothelial_experiment_fixed_modulus/E4/2D%20data/iter_4_il8_700kmcs.png)
-
-
+![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/8f2af0e6082c1acdeabf84115769948ae6816db4/endothelial_experiment_fixed_modulus/E4/2D%20data/iter_4_il8_700kmcs.png)
 
 ## Abstract
 
 Burn injuries pose a significant challenge in predicting the end result of the final wound healing of the burn. The aim of this study is to develop simulation models for the post-burn immune response based on existing (pre)clinical data from the literature. We developed an agent-based model (ABM) to capture the complexity associated with the dynamics of inflammation after burn injuries, including changes in cell counts and cytokine concentrations. Through simulations spanning a four-day period, we successfully captured significant factors influencing the inflammatory response, i.e., the initial number of endothelial cells, the chemotaxis threshold, and the intensity of chemoattractants. Our findings highlight the pivotal role of the initial cell count in shaping the intensity of inflammation, in determining the timeline of the inflammation, and the end result of wound healing.
 
+## Software Implementation
 
-## Software implementation
+All source code used to generate the results and figures in the paper can be accessed by contacting the original authors. The calculations and figure generation are all run in Python 3.10. The data used in this study is provided in `/combi_code/datafiles`, and the sources for the figures are in `manuscript`. Results generated by the code are saved in `Paper_figures`.
+
+Compucell3D 4.4.1 was also used here with the help of NumPy and FiPy packages.
+
+## Getting the Figures, Raw Data Files, and Videos of the Simulations
+
+You can download a copy of all the files in this repository by cloning the repository:
+
+git clone https://github.com/youwillfindinfinity/post_burn_immune_response
 
 
-All source code used to generate the results and figures in the paper can be accessed by contacting the original authors.
-The calculations and figure generation are all run in python3.10.
-The data used in this study is provided in `/combi_code/datafiles` and the sources for the figures are in `manuscript`.
-Results generated by the code are saved in `Paper_figures`.
+or by clicking on `Code` > `Download ZIP`.
 
-Compucell3D 4.4.1 was also used here with the help of numpy and fipy packages.
-
-## Getting the figures, raw data files and videos of the simulations
-
-You can download a copy of all the files in this repository by cloning the
-repository 
-
-  git clone http://youwillfindinfinity/post_burn_immune_response
-
-or Code>Download Zip.
-
-The figures and text are not yet open source. The authors reserve the rights to the
-article content, which is currently being submitted for publication in the
-*Frontiers in Immunology: New Approach Methods in Immunology* special issue journal.
+The figures and text are not yet open source. The authors reserve the rights to the article content, which is currently being submitted for publication in the *Frontiers in Immunology: New Approach Methods in Immunology* special issue journal.
