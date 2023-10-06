@@ -26,7 +26,7 @@ Email: h.korkmaz@amsterdamumc.nl
 **Keywords:**  
 burns, wound healing, inflammation, immune response, computational modeling.
 
-![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/assets/71082489/ca07137f-91fd-4b1b-a107-b61b3f2c108d)
+![Image]([Paper_figures/Figure 1/flow chart of conceptual model.png](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/c52bf6d5ec78860c7e8e771192d26704f836f330/Paper_figures/Figure%201/flow%20chart%20of%20conceptual%20model.png))
 
 This paper will be submitted for publication in *Frontiers in Immunology: New Approach Methods in Immunology*.
 
