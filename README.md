@@ -34,9 +34,12 @@ This paper will be submitted for publication in *Frontiers in Immunology: New Ap
 
 ## Abstract
 
-### Predicting the dynamics of wound healing process can be challenging for burn injuries. We present simulation models for the post-burn immune response based on (pre)clinical data. We developed an Glazier-Graner-Hogeweg (GGH)  method-based model to capture the complexities associated with the dynamics of inflammation after burn injuries, including changes in cell counts and cytokine levels. Through simulations from day 0 – 4 post-burn, we successfully identified key factors influencing the acute inflammatory response, i.e., the initial number of endothelial cells, the chemotaxis threshold, and the level of chemoattractants. Our findings highlight the pivotal role of the initial cell count regarding the intensity of inflammation and the timeline of acute inflammation, 0 – 4 days post-burn.
+Predicting the dynamics of wound healing process can be challenging for burn injuries. We present simulation models for the post-burn immune response based on preclinical data. We developed an Glazier-
+Graner-Hogeweg method-based model to capture the complexities associated with the dynamics of inflammation after burn injuries, including changes in cell counts and cytokine levels. Through simulations from 
+day 0 – 4 post-burn, we successfully identified key factors influencing the acute inflammatory response, i.e., the initial number of endothelial cells, the chemotaxis threshold, and the level of 
+chemoattractants. Our findings highlight the pivotal role of the initial cell count regarding the intensity of inflammation and the timeline of acute inflammation, 0 – 4 days post-burn.
 
-![image](https://github.com/youwillfindinfinity/post_burn_immune_response/assets/71082489/118d4dc3-4a2b-4b88-9c74-65bfd50df7e2)
+![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/main/Simulation%20results/FIgures%20and%20comparisons/cell_count_data_E1.png)
 
 
 ## Software Implementation
