@@ -38,7 +38,7 @@ def tester(cellpresente, cellpresentndn, cellpresentna, cellpresentm1, cellprese
     mysolver=LinearGMRESSolver()
 
     # Define the equations
-    eqil8 = TransientTerm() == DiffusionTerm(coeff=Dil8) - ImplicitSourceTerm(muil8) + keil8*cellpresente + kndnil8*cellpresentndn - thetanail8*cellpresentna
+    eqil8 = TransientTerm() == DiffusionTerm(coeff=Dil8) - ImplicitSourceTerm(muil8) + keil8*cellpresente + kndnil8*cellpresentndn - ImplicitSourceTerm(thetanail8*cellpresentna)
     eqil1 = TransientTerm() == DiffusionTerm(coeff=Dil1) - ImplicitSourceTerm(muil1) + knail1*cellpresentna
     eqil6 = TransientTerm() == DiffusionTerm(coeff=Dil6) - ImplicitSourceTerm(muil6) + km1il6*cellpresentm1
     eqil10 = TransientTerm() == DiffusionTerm(coeff=Dil10) - ImplicitSourceTerm(muil10) + km2il10*cellpresentm1
