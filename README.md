@@ -1,4 +1,5 @@
 # An in silico modeling approach to understanding the dynamics of the post-burn immune response
+Paper published [here](https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2024.1303776/full)
 
 **Authors:**  
 H. Ibrahim Korkmaz<sup>1,2,3,4*</sup>†, Vivek M. Sheraton<sup>5,6,7*</sup>†, Roland V. Bumbuc<sup>1,2,5,6,7</sup>, Meifang Li<sup>5</sup>, Anouk Pijpe<sup>1,3</sup>, Patrick P.G. Mulder<sup>4,8</sup>, Bouke K.H.L. Boekema<sup>1,4</sup>, Evelien de Jong<sup>9</sup>, Stephan G.F. Papendorp<sup>9</sup>, Ruud Brands<sup>10,11</sup>, Esther Middelkoop<sup>1,3,4</sup>, Peter M.A. Sloot<sup>5</sup>, Paul P.M. van Zuijlen<sup>1,3,4,12</sup>
@@ -26,18 +27,21 @@ Email: h.korkmaz@amsterdamumc.nl
 **Keywords:**  
 burns, wound healing, inflammation, immune response, computational modeling.
 
-![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/c52bf6d5ec78860c7e8e771192d26704f836f330/Paper_figures/Figure%201/flow%20chart%20of%20conceptual%20model.png)
+![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/main/Paper_figures/Figure%201/flow%20chart%20of%20conceptual%20model.png)
 
-This paper will be submitted for publication in *Frontiers in Immunology: New Approach Methods in Immunology*.
+This paper was submitted, acceptesd, peer-reviewed and publushed in *Frontiers in Immunology: New Approach Methods in Immunology*.
 
 ![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/8f2af0e6082c1acdeabf84115769948ae6816db4/endothelial_experiment_fixed_modulus/E4/2D%20data/iter_4_il8_700kmcs.png)
 
 ## Abstract
 
-Predicting the dynamics of wound healing process can be challenging for burn injuries. We present simulation models for the post-burn immune response based on preclinical data. We developed an Glazier-
-Graner-Hogeweg method-based model to capture the complexities associated with the dynamics of inflammation after burn injuries, including changes in cell counts and cytokine levels. Through simulations from 
-day 0 – 4 post-burn, we successfully identified key factors influencing the acute inflammatory response, i.e., the initial number of endothelial cells, the chemotaxis threshold, and the level of 
-chemoattractants. Our findings highlight the pivotal role of the initial cell count regarding the intensity of inflammation and the timeline of acute inflammation, 0 – 4 days post-burn.
+Introduction: Burns are characterized by a massive and prolonged acute inflammation, which persists for up to months after the initial trauma. Due to the complexity of the inflammatory process, Predicting the dynamics of wound healing process can be challenging for burn injuries. The aim of this study was to develop simulation models for the post-burn immune response based on (pre)clinical data.
+
+Methods: The simulation domain was separated into blood and tissue compartments. Each of these compartments contained solutes and cell agents. Solutes comprise pro-inflammatory cytokines, anti-inflammatory cytokines and inflammation triggering factors. The solutes diffuse around the domain based on their concentration profiles. The cells include mast cells, neutrophils, and macrophages, and were modeled as independent agents. The cells are motile and exhibit chemotaxis based on concentrations gradients of the solutes. In addition, the cells secrete various solutes that in turn alter the dynamics and responses of the burn wound system.
+
+Results: We developed an Glazier-Graner-Hogeweg method-based model (GGH) to capture the complexities associated with the dynamics of inflammation after burn injuries, including changes in cell counts and cytokine levels. Through simulations from day 0 – 4 post-burn, we successfully identified key factors influencing the acute inflammatory response, i.e., the initial number of endothelial cells, the chemotaxis threshold, and the level of chemoattractants.
+
+Conclusion: Our findings highlight the pivotal role of the initial endothelial cell count as a key parameter for intensity of inflammation and progression of acute inflammation, 0 – 4 days post-burn.
 
 ![Image](https://github.com/youwillfindinfinity/post_burn_immune_response/blob/main/Simulation%20results/FIgures%20and%20comparisons/cell_count_data_E1.png)
 
@@ -60,8 +64,11 @@ The authors reserve the rights to the article content, which is currently being 
 Any use of the code, figures or data, must be cited as follows:
 
 @article{korkmaz2024silico,
-  title={An In Silico Modeling Approach to Understanding the Dynamics of the Post-Burn Immune Response},
-  author={Korkmaz, H. Ibrahim and Sheraton, Vivek M. and Bumbuc, Roland V. and Li, Meifang and Pijpe, Anouk and Mulder, Patrick P.G. and Boekema, Bouke K.H.L. and de Jong, Evelien and Papendorp, Stephan G.F. and Brands, Ruud and Middelkoop, Esther and Sloot, Peter M.A. and van Zuijlen, Paul P.M.},
-  journal={Frontiers in Immunology: New Approach Methods in Immunology},
+  title={An in silico modeling approach to understanding the dynamics of the post-burn immune response},
+  author={Korkmaz, H Ibrahim and Sheraton, Vivek M and Bumbuc, Roland V and Li, Meifang and Pijpe, Anouk and Mulder, Patrick PG and Boekema, Bouke KHL and de Jong, Evelien and Papendorp, Stephan GF and Brands, Ruud and others},
+  journal={Frontiers in immunology},
+  volume={15},
+  pages={1303776},
   year={2024},
+  publisher={Frontiers Media SA}
 }
